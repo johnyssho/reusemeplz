@@ -1,5 +1,6 @@
-
-"scripts": {
-	"dev":""
-	"prod":""
-  },
+{
+"scripts" : {
+	"dev": "npx tailwindcss -i ../home/static/src/input.css -o ../home/static/src/styles.css --watch",
+	"prod": "npx tailwindcss -i ../home/static/src/input.css -o ../home/static/src/styles.css --minify"
+  }
+}
