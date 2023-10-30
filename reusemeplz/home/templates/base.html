@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="cz">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}Reusemeplz{% endblock %}</title>
+    {% comment %} <link rel="icon" href="./favicon.ico" type="image/x-icon"> {% endcomment %}
+    {% load static %} 
+    <link rel="stylesheet" href={% static 'src/styles.css' %}>
+    <link rel="stylesheet" href={% static 'css/stylesheet.css' %}> 
+  </head>
+  <body class="h-full min-h-screen">
+
+  <div class="p-4 flex flex-row justify-around items-center m-2 mt-3 rounded-lg bg-white shadow-lg border-2 border-solid border-black">
+    <img src={% static 'img/logo.svg' %}>
+    <button class="flex flex-col">
+      <span class="w-[30px] h-[4px] m-[2px] bg-black rounded-md" ></span>
+      <span class="w-[30px] h-[4px] m-[2px] bg-black rounded-md" ></span>
+      <span class="w-[30px] h-[4px] m-[2px] bg-black rounded-md" ></span>
+    </button> 
+  </div>
+  
+  {% block content %}
+
+  {% endblock %}
+
+	{% comment %} <script src="index.js"></script> {% endcomment %}
+  </body>
+</html>
+

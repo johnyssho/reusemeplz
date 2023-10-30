@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %}Návod na cloud{% endblock %}
+
+{% block content %}
+
+<div class="p-4 m-2 rounded-xl bg-blue-100">
+  <div class="text-4xl p-2 font-bold text-center border-b-2 border-black mb-5">Vlastní cloud úložiště</div>
+
+  <div class="font-semibold text-2xl">Co budeme potřebovat?</div> 
+
+  <p>Samotný projekt je úzce spojený s operačním systémem <strong>Linux</strong> (lépe <a class="text-red-500" href="https://stallman-copypasta.github.io/">GNU/Linux</a>, dále jen Linux). Linux je svobodný a otevřený operační systém, který nabízí mnoho výhod pro tento projekt. Jako konkrétní distribuci zvolíme <strong><a class="text-red-500" href="https://www.debian.org/">Debian</a></strong>.</p>
+
+  ---
+
+  <div class="shortcode">
+    <div class="shortcode-content">
+      <p><strong>Stabilita a spolehlivost</strong>: Linux je známý svou stabilitou a spolehlivostí. Debian je jedna z nejstabilnějších distribucí Linuxu, která je dlouhodobě podporována a poskytuje kvalitní softwarové balíčky.</p>
+  <p><strong>Bezpečnost</strong>: Linux a Debian mají silný důraz na bezpečnost. Díky otevřenému přístupu komunity jsou zranitelnosti rychle nalezeny a opraveny. To je klíčové pro provozování vlastního serveru, kde bezpečnost je prioritou.</p>
+  <p><strong>Flexibilita a přizpůsobivost</strong>: Linux a Debian nabízejí širokou škálu nástrojů a možností pro konfiguraci a přizpůsobení systému. To je důležité při přeměně starého notebooku na server, protože můžeme snadno nastavit a optimalizovat systém podle našich potřeb.</p>
+  <p><strong>Podpora komunity</strong>: Linux a Debian mají silnou a aktivní komunitu uživatelů a vývojářů, kteří poskytují pomoc, radu a podporu. Pokud narazíte na nějaký problém, je velká pravděpodobnost, že najdete odpověď nebo návod od ostatních uživatelů.</p>
+  
+  ---
+
+
+  <p>Pro hostování našeho vlastního cloud úložiště využijeme z níže uvedených důvodů aplikaci <strong><a href="https://nextcloud.com/">Nextcloud</a></strong>.</p>
+
+  ---
+
+  <div class="shortcode">
+    <div class="shortcode-content">
+      <ol>
+  <li>
+  <p>Nextcloud je open-source platforma, která nám poskytuje větší kontrolu a možnost přizpůsobit ji našim potřebám.</p>
+  </li>
+  <li>
+  <p>Bezpečnost a ochrana dat: Nextcloud se zaměřuje na bezpečnost a ochranu dat, poskytuje šifrování a další bezpečnostní funkce.</p>
+  </li>
+  <li>
+  <p>Rozšiřitelnost a funkcionality: Nextcloud nabízí bohatou sadu funkcí a rozšíření, které umožňují přizpůsobit a rozšířit naše cloudové úložiště.</p>
+  </li>
+  <li>
+  <p>Dostupnost z různých zařízení: S Nextcloud můžeme snadno přistupovat ke svým datům z různých zařízení, což přináší pohodlí a flexibilitu.</p>
+  </li>
+  <li>
+  <p>Podpora komunity: Nextcloud má aktivní komunitu uživatelů a vývojářů, kteří poskytují podporu a sdílí své zkušenosti.</p>
+  </li>
+  </ol>
+
+  ---
+
+<p>Pro projekt samozřejmě potřebujeme vhodné zařízení. Tedy nějaký <strong>starší nevyužitý notebook, či stolní počítač</strong>. Uvedu příklad notebooku, který je pro tento projekt ideální. Přitom Vám uvedu <strong>podmínky</strong>, které zařízení musí splňovat a další užitečné vlastnosti.</p>
+<p>Představuji Vám <strong>Lenovo Thinkpad T430</strong>.</p>
+<figure>
+  {% load static %}
+  <img src={% static '/img/t430.webp' %} alt="" class="navodpng">
+</figure>
+
+
+<p>(<a href="https://www.thinkwiki.org/wiki/Category:T430">info</a>, <a href="https://www.levnapc.cz/notebooky-lenovo-thinkpad-t430-rada.html">levnapc</a>, <a href="https://www.pocitacezababku.cz/Pouzite-notebooky.htm?search=thinkpad+t430">pocitacezababku</a>)</p>
+<p>Tento notebok je ideální pro tento projekt, neboť obsahuje <strong>nutné součásti</strong>:</p>
+<ol>
+<li>ethernet port</li>
+<li>slot na pevný disk 2.5&quot;</li>
+</ol>
+<p>Má i další výhody. Jeho CD mechanika se dá vyměnit za další prostor pro disk (<a href="https://www.alza.cz/orico-2-5-hdd-ssd-caddy-for-laptops-9-5mm-d5790543.htm">zde</a>) a je místo ještě na mSATA disk (<a href="https://www.youtube.com/watch?v=QaWEkKYc-94">zde</a> a <a href="https://www.alza.cz/pevne-disky/msata/18842851-par280-218378621.htm#f&amp;cst=0&amp;cud=0&amp;pg=1&amp;prod=&amp;par280=280-218378621">zde</a>).</p>
+<p>Jako další budeme potřebovat <strong>internetový kabel</strong>, kterým připojíme notebook k našemu routeru.</p>
+<p>Také potřebujeme prázdný <strong>USB flash disk</strong>, který použijeme k instalaci Debianu. bug-Velikost</p>
+<p>Nakonec samozřejmě potřebuje náš <strong>pevný disk</strong>, na který budeme instalovat, <strong>vložený do notebooku</strong>.</p>
+
+
+---
+
+<div class="shortcode">
+  <div class="shortcode-content">
+    (<em>Pokud si nevíte rady s tím, jak se do vašeho zařízení disk vkládá, doporučuji najít si demontážní video vašeho notebooku, např. <a href="https://www.youtube.com/results?search_query=t430+disassembly">zde</a></em>)
+  </div>
+  <button class="shortcode-button" onclick="toggleContent2(this)">
+    Nápověda
+  </button>
+</div>
+
+---
+
+</div>
+
+
+
+{% endblock %}
