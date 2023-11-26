@@ -12,13 +12,15 @@
   </head>
   <body class="h-full min-h-screen">
 
-  <div class="p-4 flex flex-row justify-around items-center m-2 mt-3 rounded-lg bg-white shadow-lg border-2 border-solid border-black">
-    <a href={% url 'home' %}><img src={% static 'img/logo.svg' %}></a>
-    <button class="flex flex-col">
-      <span class="w-[30px] h-[4px] m-[2px] bg-black rounded-md" ></span>
-      <span class="w-[30px] h-[4px] m-[2px] bg-black rounded-md" ></span>
-      <span class="w-[30px] h-[4px] m-[2px] bg-black rounded-md" ></span>
-    </button> 
+  <div class="flex justify-center items-center">
+    <div class="p-4 flex flex-row justify-between items-center m-2 mt-3 rounded-lg bg-white shadow-lg border-2 border-solid border-black max-w-[1100px] w-full">
+      <a href={% url 'home' %}><img src={% static 'img/logo.svg' %}></a>
+      <button class="flex flex-col">
+        <span class="w-[30px] h-[4px] m-[2px] bg-black rounded-md" ></span>
+        <span class="w-[30px] h-[4px] m-[2px] bg-black rounded-md" ></span>
+        <span class="w-[30px] h-[4px] m-[2px] bg-black rounded-md" ></span>
+      </button> 
+    </div>
   </div>
   
   {% block content %}

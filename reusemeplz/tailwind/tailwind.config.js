@@ -12,7 +12,11 @@ module.exports = {
       semibold: '600',
       bold: '700',
     },
-    extend: {},
+    extend: {
+      scale: {
+        '103': '1.03',
+      }
+    },
   },
   plugins: [],
 }
