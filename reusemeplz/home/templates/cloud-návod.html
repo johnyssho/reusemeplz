@@ -175,7 +175,9 @@
 
 <hr class="border border-gray-400 w-full my-1">
 
-<p><span class="font-semibold">Nyní bude probíhat samotná tvorba live-usb, může to nějakou dobu trvat&hellip;</span></p>
+<div class="w-full">
+	<p><span class="font-semibold">Nyní bude probíhat samotná tvorba live-usb, může to nějakou dobu trvat&hellip;</span></p>
+</div>
 
 <hr class="border border-gray-400 w-full my-1">
 
@@ -187,17 +189,19 @@
 
 <div class="my-1"><span class="font-semibold">READY</span></div>
 
-<p>Naše <span class="font-semibold">live-usb je připravené</span>.</p>
+<div class="w-full">
+	<p>Naše <span class="font-semibold">live-usb je připravené</span>.</p>
+</div>
 
 <hr class="border border-black w-full my-1">
 
 <div class="font-semibold text-xl mb-2">Instalace na hardware</div> 
 
 <p>Vaše zařízení s vloženým diskem <span class="font-semibold">zapojte do zdroje</span>, připojte ho k Vašemu routeru <span class="font-semibold">internetovým</span> kabelem a připojte naše <span class="font-semibold">live-usb</span>.</p>
-<figure>
-  <img src="/images/navod/d1.jpg" alt="" class="navodpng">
-  
-</figure>
+
+<div>
+  <img src={% static 'img/hardware1.jpg' %}>
+</div>
 
 <div class="w-full">
 	<p>Při zapínání zařízení musíme vybrat jako <span class="font-semibold">zdroj bootování</span> naše <span class="font-semibold">live-usb</span>.</p>
@@ -212,8 +216,135 @@
 </div>
 
 <a name="preboot"></a>
-<button class="bg-red-300 p-1 px-3 rounded-md"><a href={% url 'boot-tips' %}>Více</a><button>
+<button class="bg-red-300 p-1 px-3 rounded-md"><a href={% url 'boot-tips' %}>Více</a></button>
 
+<div class="w-full">
+	<p>Na mém thinkpadu stačí po zmáčknutí tlačítka napájení mačkat tlačítko f12.</p>
+</div>
+
+<div>
+  <img src={% static 'img/hardware2.jpg' %}>
+</div>
+
+<div>
+  <img src={% static 'img/hardware3.jpg' %}>
+</div>
+  
+<hr class="border border-gray-400 w-full my-1">
+
+<div class="w-full">
+  <p><span class="font-semibold">Vyberte jako zdroj bootování USB disk.</span></p>
+</div>
+
+<hr class="border border-gray-400 w-full my-1">
+
+<div>
+  <img src={% static 'img/hardware4.jpg' %}>
+</div>
+
+<div class="w-full">
+  <p>bug- Secure boot? Bios lock?</p>
+</div>
+  
+<div class="w-full">
+  <p>Nyní musíme provést samotnou instalaci debianu, naštěstí má celá instalace velmi příjemné uživatelské prostředí, zvolte jazyk podle vašeho výběru a instalaci projděte krok po kroku. Pro pomoc přikládám fotografie z takové probíhající instalace.</p>
+</div>
+  
+<a name="debianinstalace"></a>
+<button class="bg-red-300 p-1 px-3 rounded-md"><a href={% url 'debian-instalace' %}>Instalace Debianu</a></button>
+
+    
+<div class="w-full">
+  <p>Během restartování zařízení po úspěšné instalaci nezapomeňte vypojit <span class="font-semibold">live-usb</span>.</p>
+</div>
+
+<div class="w-full">
+  <p>Po restartu byste měli vidět tmavou obrazovku a na ní napsáno něco podobného:</p>
+</div>
+    
+<div class="w-full bg-black text-white">
+  <pre class="whitespace-pre-line m-3">
+Debian GNU/Linux 12 server tty1  
+    
+server login: <span class="animate-pulse">_</span>
+  </pre>
+</div>
+    
+    
+    
+<div class="w-full">
+  <p><span class="font-semibold">Gratuluji</span> k úspěšné instalaci debianu!</p> 
+</div>
+
+<hr class="border border-black w-full my-1">
+
+<div class="font-semibold text-xl mb-2">Sudo</div> 
+
+<div class="w-full">
+	<p>Nyní musíme dát našemu účtu práva administrátora, abychom mohli provádět změny a instalovat programy. K tomu využijeme program <span class="font-semibold">sudo</span>.</p>
+</div>
+<div class="w-full">
+	<p>Nejdříve se však musíme přihlásit pomocí <span class="font-semibold">root</span> účtu, nainstalovat a nastavit program <span class="font-semibold">sudo</span>.</p>
+</div>
+
+
+
+<div class="js-more-div my-1 flex flex-col justify-center items-center gap-2">
+  <div class="js-more-text hidden mb-2">
+    <p class="my-1">Root účet je speciální uživatelský účet na UNIX-like operačních systémech, který má nejvyšší úroveň přístupových práv. Má kompletní kontrolu nad systémem a může provádět jakékoli operace, včetně změn v kritických částech systému. Zabezpečení root účtu je důležité, protože zneužití tohoto účtu může vést k vážným problémům a ohrožení systému.</p>
+    <p class="my-1">Sudo je nástroj, který umožňuje běžným uživatelům vykonávat příkazy s oprávněními root účtu. Tímto způsobem není nutné se přihlašovat přímo jako root uživatel, což snižuje riziko chyb a zabezpečení systému. Sudo také poskytuje možnost řízení přístupových práv pro různé uživatele a skupiny.</p>
+    <p class="my-1">Nastavení sudo je lepší volbou, protože umožňuje oddělení běžných uživatelských operací od operací vyžadujících zvýšená práva. To znamená, že můžete být běžným uživatelem a příležitostně vykonávat administrátorské úkony pomocí sudo, místo aby byl váš účet trvale v režimu root. Tím se minimalizuje riziko chyb a zneužití root přístupu a zvyšuje se celková bezpečnost systému.</p>
+  </div>
+  <button class="js-more-button bg-red-300 p-1 px-3 rounded-md">Více<button>
+</div>
+
+<div>
+  <ol class="list-decimal list-inside">
+    <li>
+	    Pro přihlášení napište <span class="font-semibold">root</span> a zmáčkněte ENTER.
+    </li>
+    <li>
+	    Poté Vaše <span class="font-semibold">heslo administrátora</span> (které jste nastavili během instalace) a ENTER. (během psaní hesla neuvidíte, že se něco píše, je to tak správně)
+    </li>
+  </ol>
+</div>
+
+<div class="w-full bg-black text-white">
+  <pre class="whitespace-pre-line m-3">
+Debian GNU/Linux 12 server tty1
+
+server login: root
+Password:
+Linux server 6.1.0-9-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.27-1 (2023-05-08) X86_64
+
+The programs included with the Debian GNU/Linux system are free software:
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO HARRANTY, to the extent
+permitted by applicable law.
+root@server:~$ <span class="animate-pulse">_</span>
+  </pre>
+</div>
+
+<div class="w-full">
+  <ol class="list-decimal list-inside" start="3">
+    <li>Aktualizujeme seznam dostupných software balíčků:</li>
+  </ol>
+</div>
+
+<div class="w-full bg-black text-white">
+  <pre class="whitespace-pre-line m-3">
+apt update
+  </pre>
+</div>
+
+<div class="w-full">
+  <p>(pokud chcete rozumět příkazu apt a tomu, o čem je tu vlastně řeč:)</p>
+</div> 
+
+<a name="preapt"></a>
+<button class="bg-red-300 p-1 px-3 rounded-md"><a href={% url 'apt' %}>apt návod</a></button>
 
 </div>
 </div>

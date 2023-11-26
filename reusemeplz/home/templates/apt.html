@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+
+{% block title %}Návod na cloud{% endblock %}
+
+{% block content %}
+
+<div class="flex justify-center items-center md:text-lg">
+<div class="p-4 md:p-8 m-2 rounded-xl bg-blue-50 flex flex-col justify-center items-center gap-2 max-w-[900px]">
+  <div class="font-semibold text-2xl mb-2">Package manager crash course</div> 
+
+  <div class="w-full">
+	  <p>Správce balíčků (package manager) je nástroj, který usnadňuje instalaci, aktualizaci a odstraňování softwaru na operačním systému Linux. Jeho úlohou je spravovat balíčky, což jsou předpřipravené soubory obsahující aplikace, knihovny a další potřebné soubory.</p>
+  </div>
+
+  <div class="w-full">
+	  <p>V Linuxu je jedním z nejčastěji používaných správců balíčků program apt (Advanced Package Tool). Apt je základní nástroj pro správu balíčků v distribucích založených na Debianu, jako je například Ubuntu nebo Debian samotný.</p>
+  </div>
+
+  <div class="w-full">
+	  <p>Pamatujte si, že pro použití příkazů apt je obvykle <span class="font-semibold">potřeba mít administrátorská práva</span>, která lze získat pomocí příkazu &ldquo;<span class="font-semibold">sudo</span>&rdquo;.</p>
+  </div>
+
+  <div class="w-full">
+	  <p>Takže příkaz pro aktualizaci seznamu balíčků bude ve finále vypadat takto, pokud nebudeme přihlášení jako root.</p>
+  </div>
+  
+  <div class="w-full bg-black text-white">
+    <pre class="whitespace-pre-line m-3">
+  sudo apt update
+    </pre>
+  </div>
+  
+  <div class="w-full">
+	  <p><span class="font-semibold">Níže je stručný přehled základních příkazů apt.</span></p>
+  </div>
+
+<hr class="border border-black w-full my-1">
+
+  <div>
+    <ol class="list-decimal list-inside font-semibold">
+    <li>Aktualizace seznamu balíčků:</li>
+    </ol>
+  </div>
+ 
+  <div class="w-full bg-black text-white">
+    <pre class="whitespace-pre-line m-3">
+  sudo apt update
+    </pre>
+  </div>
+  
+  <div class="w-full">
+	  <p>Tento příkaz aktualizuje seznam dostupných balíčků z internetových repozitářů.</p>
+  </div>
+
+<hr class="border border-black w-full my-1">
+
+  <div>
+    <ol class="list-decimal list-inside font-semibold" start="2">
+    <li>Aktualizace systému:</li>
+    </ol>
+  </div>
+  
+  <div class="w-full bg-black text-white">
+    <pre class="whitespace-pre-line m-3">
+  sudo apt upgrade
+    </pre>
+  </div>
+
+  <div class="w-full">
+	  <p>Tento příkaz aktualizuje všechny nainstalované balíčky na nejnovější verze.</p>
+  </div>
+
+<hr class="border border-black w-full my-1">
+
+  <div>
+    <ol class="list-decimal list-inside font-semibold" start="3">
+    <li>Instalace balíčku:</li>
+    </ol>
+  </div>
+ 
+  <div class="w-full bg-black text-white">
+    <pre class="whitespace-pre-line m-3">
+  sudo apt install nazev_balicku
+    </pre>
+  </div>
+
+  <div class="w-full">
+	  <p>Tento příkaz nainstaluje vybraný balíček. Nahraďte &ldquo;nazev_balicku&rdquo; konkrétním názvem balíčku, který chcete nainstalovat.</p>
+  </div>
+
+<hr class="border border-black w-full my-1">
+
+  <div>
+    <ol class="list-decimal list-inside font-semibold" start="4">
+    <li>Odstranění balíčku:</li>
+    </ol>
+  </div>
+ 
+  <div class="w-full bg-black text-white">
+    <pre class="whitespace-pre-line m-3">
+  sudo apt remove nazev_balicku
+    </pre>
+  </div>
+  
+  <div class="w-full">
+	  <p>Tento příkaz odstraní vybraný balíček ze systému. Nahraďte &ldquo;nazev_balicku&rdquo; konkrétním názvem balíčku, který chcete odstranit.</p>
+  </div>
+
+<hr class="border border-black w-full my-1">
+
+  <div>
+    <ol class="list-decimal list-inside font-semibold" start="5">
+    <li>Vyhledání balíčků:</li>
+    </ol>
+  </div> 
+  
+  <div class="w-full bg-black text-white">
+    <pre class="whitespace-pre-line m-3">
+  apt search vyhledavaci_dotaz
+    </pre>
+  </div>
+  
+  <div class="w-full">
+	  <p>Tento příkaz vyhledá balíčky na základě zadaného vyhledávacího dotazu. Nahraďte &ldquo;vyhledavaci_dotaz&rdquo; konkrétním výrazem, který chcete vyhledat.</p>
+  </div>
+
+<hr class="border border-black w-full my-1">
+
+  <div>
+    <ol class="list-decimal list-inside font-semibold" start="6">
+    <li>Zobrazení informací o balíčku:</li>
+    </ol>
+  </div>
+  
+  <div class="w-full bg-black text-white">
+    <pre class="whitespace-pre-line m-3">
+  apt show nazev_balicku
+    </pre>
+  </div>
+  
+  <div class="w-full">
+	  <p>Tento příkaz zobrazí podrobné informace o vybraném balíčku.</p>
+  </div>
+
+<hr class="border border-black w-full my-1">
+
+
+<button class="bg-red-300 p-1 px-3 rounded-md"><a href="{% url 'cloudnávod' %}#preapt">zpět na návod</a></button>
+
+</div>
+</div>
+
+
+{% endblock %}
+
