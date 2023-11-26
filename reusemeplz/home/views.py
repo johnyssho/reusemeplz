@@ -5,3 +5,6 @@ def HomeView(request):
 
 def CloudNavodView(request):
   return render(request, 'cloud-návod.html')
+
+def BootTipsView(request):
+  return render(request, 'boot-tips.html')

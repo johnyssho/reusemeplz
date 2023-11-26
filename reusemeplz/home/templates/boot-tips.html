@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}Návod na cloud{% endblock %}
+
+{% block content %}
+
+<div class="flex justify-center items-center md:text-lg">
+<div class="p-4 md:p-8 m-2 rounded-xl bg-blue-50 flex flex-col justify-center items-center gap-2 max-w-[900px]">
+  <div class="font-semibold text-2xl mb-2">Jak se dostat do boot menu?</div> 
+
+  <div class="w-full">
+	  <p><em>!!Upozornění: Obrázky jsou čistě ilustrační, bios různých výrobců se může i dramaticky lišit!!</em></p>
+  </div>
+  <div class="w-full">
+	  <p>Často při zapínání zařízení uvidíte na chviličku na obrazovce něco <span class="font-semibold">podobného</span>:</p>
+  </div>
+
+    {% load static %}
+    
+  <div>
+	 <img src={% static 'img/boot1.jpg' %}>
+  </div>
+  
+  <div>
+	 <img src={% static 'img/boot2.png' %}>
+  </div>
+
+  <div>
+	 <img src={% static 'img/boot3.png' %}>
+  </div>
+  
+  <div class="w-full">
+	  <p>Zkrátka <span class="font-semibold">instrukce k tomu, co dál</span>.</p>
+  </div>
+  <div class="w-full">
+	  <p>Máme dvě možnosti:</p>
+  <ol class="list-decimal list-inside">
+	  <li>buď se dostaneme do boot menu a <span class="font-semibold">vybereme jako zdroj pro boot usb disk</span>:</li>
+  </ol>
+  </div>
+
+ <div>
+	 <img src={% static 'img/boot4.jpg' %}>
+  </div>
+  
+  <ol start="2" class="list-decimal list-inside">
+	  <li>nebo se dostaneme do <span class="font-semibold">bios menu</span>, kde v záložce <span class="font-semibold">boot</span> můžeme nastavit prioritu disků pro boot:</li>
+  </ol>
+
+ <div>
+	 <img src={% static 'img/boot5.png' %}>
+  </div>
+  
+   <div>
+	 <img src={% static 'img/boot6.png' %}>
+  </div>
+  
+   <div>
+	 <img src={% static 'img/boot7.png' %}>
+  </div>
+  
+   <div>
+	 <img src={% static 'img/boot8.png' %}>
+  </div>
+  
+   <div>
+	 <img src={% static 'img/boot9.png' %}>
+  </div>
+  
+   <div>
+	 <img src={% static 'img/boot10.png' %}>
+  </div>
+  
+<button class="bg-red-300 p-1 px-3 rounded-md"><a href="{% url 'cloudnávod' %}#preboot">Zpět na návod</a><button>
+
+
+</div>
+</div>
+
+
+{% endblock %}
+

@@ -91,6 +91,7 @@
 
 <hr class="border border-black w-full my-1">
 
+
 <div class="font-semibold text-2xl my-2">Instalace Debianu</div> 
 
 <div class="font-semibold text-xl mb-2">Live-USB</div> 
@@ -108,54 +109,110 @@
   <img src={% static 'img/rufus1.PNG' %}>
 </div>
 
+<hr class="border border-gray-400 w-full my-1">
+
 <div>Na zvýrazněném místě se musí zobrazit váš usb flash disk.</div>
+
+<hr class="border border-gray-400 w-full my-1">
 
 <div>
   <img src={% static 'img/rufus2.PNG' %}>
 </div>
 
-<h6 id="select"><span class="font-semibold">Select</span></h6>
+<hr class="border border-gray-400 w-full my-1">
+
+<div class="my-1"><span class="font-semibold">Select</span></div>
+
+<hr class="border border-gray-400 w-full my-1">
 
 <div>
   <img src={% static 'img/rufus3.PNG' %}>
 </div>
 
-<h6 id="vyberte-dříve-stažený-instalační-soubor-debianu">Vyberte dříve stažený <span class="font-semibold">instalační soubor debianu</span>.</h6>
+<hr class="border border-gray-400 w-full my-1">
+
+<div class="my-1">Vyberte dříve stažený <span class="font-semibold">instalační soubor debianu</span>.</div>
+
+<hr class="border border-gray-400 w-full my-1">
 
 <div>
   <img src={% static 'img/rufus4.PNG' %}>
 </div>
 
-<h6 id="start"><span class="font-semibold">START</span></h6>
+<hr class="border border-gray-400 w-full my-1">
+
+<div class="my-1"><span class="font-semibold">START</span></div>
+
+<hr class="border border-gray-400 w-full my-1">
 
 <div>
   <img src={% static 'img/rufus5.PNG' %}>
 </div>
 
-<h6 id="ok"><span class="font-semibold">OK</span></h6>
+<hr class="border border-gray-400 w-full my-1">
+
+<div class="my-1"><span class="font-semibold">OK</span></div>
+
+<hr class="border border-gray-400 w-full my-1">
 
 <div>
   <img src={% static 'img/rufus6.PNG' %}>
 </div>
 
-<h6 id="yes"><span class="font-semibold">Yes</span></h6>
+<hr class="border border-gray-400 w-full my-1">
+
+<div class="my-1"><span class="font-semibold">Yes</span></div>
+
+<hr class="border border-gray-400 w-full my-1">
 
 <div>
   <img src={% static 'img/rufus7.PNG' %}>
 </div>
 
-<h6 id="ok-1"><span class="font-semibold">OK</span></h6>
+<hr class="border border-gray-400 w-full my-1">
+
+<div class="my-1"><span class="font-semibold">OK</span></div>
+
+<hr class="border border-gray-400 w-full my-1">
 
 <p><span class="font-semibold">Nyní bude probíhat samotná tvorba live-usb, může to nějakou dobu trvat&hellip;</span></p>
+
+<hr class="border border-gray-400 w-full my-1">
 
 <div>
   <img src={% static 'img/rufus8.PNG' %}>
 </div>
 
-<h6 id="ready"><span class="font-semibold">READY</span></h6>
+<hr class="border border-gray-400 w-full my-1">
+
+<div class="my-1"><span class="font-semibold">READY</span></div>
 
 <p>Naše <span class="font-semibold">live-usb je připravené</span>.</p>
 
+<hr class="border border-black w-full my-1">
+
+<div class="font-semibold text-xl mb-2">Instalace na hardware</div> 
+
+<p>Vaše zařízení s vloženým diskem <span class="font-semibold">zapojte do zdroje</span>, připojte ho k Vašemu routeru <span class="font-semibold">internetovým</span> kabelem a připojte naše <span class="font-semibold">live-usb</span>.</p>
+<figure>
+  <img src="/images/navod/d1.jpg" alt="" class="navodpng">
+  
+</figure>
+
+<div class="w-full">
+	<p>Při zapínání zařízení musíme vybrat jako <span class="font-semibold">zdroj bootování</span> naše <span class="font-semibold">live-usb</span>.</p>
+</div>
+
+<div class="w-full">
+	<p>Proto se musíme dostat do <span class="font-semibold">boot menu při zapínání počítače</span>.</p>
+</div>
+
+<div class="w-full">
+	<p>Toho se docílí různě, záleží na modelu vašeho zařízení, pro zjištění hledejte instrukce přímo k vašemu zařízení nebo aspoň výrobci na internetu, ale většinou vidíte nějaké instrukce na obrazovce již při zapínání počítače.</p>
+</div>
+
+<a name="preboot"></a>
+<button class="bg-red-300 p-1 px-3 rounded-md"><a href={% url 'boot-tips' %}>Více</a><button>
 
 
 </div>
