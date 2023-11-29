@@ -60,10 +60,8 @@
 </div>
 
 <div class="">
-  <figure>
     {% load static %}
     <img src={% static '/img/t430.webp' %} alt="" class="navodpng">
-  </figure>
   <p class="text-center">(<a class="text-red-500" href="https://www.thinkwiki.org/wiki/Category:T430">info</a>, <a class="text-red-500" href="https://www.levnapc.cz/notebooky-lenovo-thinkpad-t430-rada.html">levnapc</a>, <a class="text-red-500" href="https://www.pocitacezababku.cz/Pouzite-notebooky.htm?search=thinkpad+t430">pocitacezababku</a>)</p>
 </div>
 
@@ -479,8 +477,7 @@ Last login: Wed Jul 5 15:54:03 CEST 2023 from 192.168.0.104 on pts/0
 jh@server:"$ sudo apt update
 [sudo] password for jh:
   </pre>
-</div>
-
+</div> 
 <div class="w-full bg-black text-white">
   <pre class="whitespace-pre-line m-3">
 Hit:1 http://deb.debian.org/debian bookworm InRelease
@@ -503,6 +500,289 @@ jh@server:"$ <span class="animate-pulse">_</span>
 </div>
 
 <hr class="border border-black w-full my-1">
+
+<div class="font-semibold text-xl mb-2">SSH</div> 
+
+<div class="w-full">
+	<p>K pohodlnějšímu přístupu k Vašemu serveru je nyní příhodné nainstalovat <span class="font-semibold">ssh</span> a naučit se s ním. Tento návod se dá zvládnout i bez tohoto kroku, ale já ho <span class="font-semibold">silně doporučuji</span> i pro pozdější případnou vzdálenou správu serveru.</p>
+</div>
+
+<button class="bg-red-300 p-1 px-3 rounded-md"><a href="{% url 'cloudnávod' %}#postssh">Přeskočit</a></button>
+
+<div class="font-semibold text-lg w-full">Co je SSH:</div> 
+
+<div class="w-full">
+	<p>SSH (Secure Shell) je zabezpečený protokol pro vzdálenou správu a přenos dat mezi dvěma zařízeními. Pomocí SSH můžete přistupovat ke vzdáleným serverům z jiných zařízení a provádět různé úkony, jako je ovládání serveru, kopírování souborů nebo spuštění příkazů pomocí příkazové řádky.</p>
+</div>
+
+<div class="font-semibold text-lg w-full">Debian server:</div> 
+
+
+<div class="w-full">
+	<p>SSH server jsme již nainstalovali na Debian serveru během grafické instalace.</p>
+</div>
+
+<div class="font-semibold text-lg w-full">Windows počítač:</div> 
+
+<div class="w-full">
+	<p>Na windowsu budeme jako terminál využívat <span class="font-semibold">windows powershell</span>. Pogram spustíte tak, že jej normálně vyhledáte v nabídce start.</p>
+</div>
+
+<div class="w-full">
+	<p>Chcete-li používat SSH v PowerShellu ve Windows, musíte povolit funkci OpenSSH Client. Zde je návod, jak to udělat:</p>
+</div>
+
+<div class="w-full">
+<ol class="list-decimal list-inside ms-2">
+<li>Otevřete nabídku Start a vyhledejte &ldquo;Správa volitelných funkcí&rdquo; a otevřete odpovídající nastavení.</li>
+<li>Klikněte na možnost &ldquo;Přidat funkci&rdquo; nebo &ldquo;Přidat funkci nebo balíček&rdquo;.</li>
+<li>Přejděte dolů a vyhledejte &ldquo;OpenSSH Client&rdquo; v seznamu dostupných funkcí.</li>
+<li>Zaškrtněte políčko vedle &ldquo;OpenSSH Client&rdquo; a klikněte na tlačítko &ldquo;Instalovat&rdquo; nebo &ldquo;Další&rdquo;, abyste spustili proces instalace.</li>
+<li>Počkejte, až se instalace dokončí.</li>
+</ol>
+</div>
+
+<div class="w-full">
+	<p>Jakmile je funkce OpenSSH Client nainstalována, můžete v PowerShellu ve Windows použít příkaz <code class="text-red-600">ssh</code> pro připojení k vzdáleným serverům pomocí SSH.</p>
+</div>
+
+<div class="w-full">
+	<p>Pokud používáte starší verzi Windows, která neobsahuje vestavěný klient OpenSSH, stále můžete nainstalovat SSH klienty třetích stran, jako je <a class="text-red-500" href="https://www.putty.org/">PuTTY</a>.</p>
+</div>
+
+<div class="font-semibold text-lg w-full">Připojení k serveru</div> 
+
+<div class="font-semibold text-gray-600 text-lg w-full">Získání IP adresy na Debian serveru:</div> 
+
+<div class="w-full">
+	<p>Na Debianu zadejte následující příkaz:</p>
+</div>
+
+<div class="w-full bg-black text-white">
+  <pre class="whitespace-pre-line m-3">
+ip addr
+  </pre>
+</div>
+
+<div class="w-full">
+	<p>Výpis zobrazí seznam síťových rozhraní. Najděte rozhraní, které je připojeno k internetu (v mém případě <span class="font-semibold">&ldquo;2: enpos25&rdquo;</span>).</p>
+</div>
+
+<div class="w-full bg-black text-white">
+  <pre class="whitespace-pre-line m-3">
+jh@server:"$ ip addr
+
+1: 10:  mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+inet 127.0.0.1/8 scope host lo
+valid_lft forever preferred_lft forever
+inet6 :1/128 scope host
+valid_lft forever preferred_lft forever
+2: enpos25:  mtu 1500 qdisc fq_codel state UP group default qlen 1000
+link/ether 00:21:cc:c3:db:9c brd ff:ff:ff:ff:ff:ff
+inet 192.168.0.164/24 brd 192.168.0.255 scope global dynamic enpes25
+valid_lft 7173sec preferred_lft 7173sec
+inet6 fe80::221:ccff:fec3:db9c/64 scope link
+valid_lft forever preferred_1ft forever
+3: wwx0215e0ec0100:  mtu 1500 qdisc noop state DOHN group default qlen 1000
+link/ether 02:15:e0:ec:01:00 brd ff:ff:ff:ff:ff:ff
+4: wlp3s0:  mtu 1500 qdisc noop state DOWN group default qlen 1000
+link/ether 9c:4e:36:36:b7:d8 brd ff:ff:ff:ff:ff:ff
+   
+jh@server:"$ <span class="animate-pulse">_</span>
+  </pre>
+</div>
+
+<div class="w-full">
+	<p>Vedle položky &ldquo;inet&rdquo; u tohoto rozhraní se nachází IP adresa serveru. Zaznamenejte si tuto IP adresu, protože ji budete potřebovat pro připojení.</p>
+</div>
+
+<div class="w-full">
+	<p>V mém případě: <span class="font-semibold">inet 192.168.0.164</span></p>
+</div>
+
+<div class="w-full">
+	<p><span class="font-semibold">Připojení k Debian serveru ze systému Windows:</span></p>
+</div>
+
+<div class="w-full">
+	<p>Na Windows počítači otevřete <span class="font-semibold">windows powershell</span>.</p>
+</div>
+
+<div class="w-full">
+	<p>Zadejte následující příkaz pro vytvoření SSH připojení:</p>
+</div>
+
+<div class="w-full bg-black text-white">
+  <pre class="whitespace-pre-line m-3">
+ssh uživatelské_jméno@ip_adresa
+  </pre>
+</div>
+
+<div class="w-full">
+	<p>uživatelské_jméno: Zadejte uživatelské jméno, které jste vytvořili při instalaci Debian serveru.</p>
+</div>
+
+<div class="w-full">
+	<p>ip_adresa: Zadejte ip adresu, kterou jste zjistili v předchozím kroku.</p>
+</div>
+
+<div class="w-full">
+	<p><span class="font-semibold">V mém případě:</span></p>
+</div>
+
+<div class="w-full bg-black text-white">
+  <pre class="whitespace-pre-line m-3">
+ssh jh@192.168.0.164 
+  </pre>
+</div>
+
+<div>
+  <img src={% static 'img/ssh1.png' %}>
+</div>
+
+<div class="w-full">
+	<p>Po zadání příkazu budete muset potvrdit fingeprint (yes) a přihlásit se zadáním hesla pro uživatele na Debian serveru.</p>
+</div>
+
+<div>
+  <img src={% static 'img/ssh2.png' %}>
+</div>
+
+<div>
+  <img src={% static 'img/ssh3.png' %}>
+</div>
+
+<div class="w-full">
+	<p class="font-semibold">Pokud je vše správně, jste připojeni k Debian serveru přes SSH a můžete provádět různé úkony pomocí příkazového řádku vzdáleně.</p>
+</div>
+
+<hr class="border border-gray-400 w-full my-1">
+
+<div class="w-full">
+	<p class="italic text-gray-600">Poznámka 1: Nepoužívám windows, proto moje screenshoty vypadají takto, nenechte se tím zmást. Pokud jste windows uživatel, vystačíte si s powershellem. Do programu můžete vkládat příkazy, které zkopírujete z tohoto návodu (pomocí ctrl+c), následně je vložíte kliknutím pravým tlačítkem myši.</p>
+</div>
+
+<div class="w-full">
+	<p class="italic text-gray-600">Poznámka 2: Vaše IP adresa nejspíš bude vypadat nějak podobně jako moje, bude se pravděpodobně lišit jen posledním číslem, je to proto, že jsme zatím náš server nevystavili zevnímu internetu, proto je dostupný jen z vaší domácí sítě a to i pomocí ssh. Prozatím musíte být připojeni ke stejné síti, abyste se k serveru mohli připojit.</p>
+</div>
+
+<hr class="border border-gray-400 w-full my-1">
+
+<div class="font-semibold text-xl mb-2">NginX webserver</div> 
+
+<a name="postssh"></a>
+
+<div class="w-full">
+	<p class="font-semibold">Připojte se k vašemu serveru přes ssh nebo přistupte k Vašemu zařízení a přihlašte se.</p>
+</div>
+
+<div class="w-full">
+	<p class="">Nyní budeme instalovat Nginx (čti Engine X) webový server, který budeme potřebovat pro Nextcloud a můžeme na něm i hostovat webové stránky.</p>
+</div>
+
+<hr class="border border-gray-400 w-full my-1">
+
+<div class="w-full">
+	<p class="italic text-gray-600">Poznámka: Nyní budeme provádět mnoho adminstorských příkazů, proto abychom všude nemuseli psát sudo, můžeme se stát na chvíli root účtem, toho docílíte takto:</p>
+</div>
+
+<div class="w-full bg-black text-white">
+  <pre class="whitespace-pre-line m-3">
+sudo su
+  </pre>
+</div>
+
+<hr class="border border-gray-400 w-full my-1">
+
+<div class="w-full">
+	<p>Aktualizujte repozitáře:</p>
+</div>
+
+<div class="w-full bg-black text-white">
+  <pre class="whitespace-pre-line m-3">
+apt update 
+  </pre>
+</div>
+
+<div class="w-full">
+	<p>Instalujte NginX:</p>
+</div>
+
+<div class="w-full bg-black text-white">
+  <pre class="whitespace-pre-line m-3">
+apt install nginx
+  </pre>
+</div>
+
+<div class="w-full">
+	<p class="italic text-gray-600">Potvrďte Y, pokud třeba.</p>
+</div>
+
+<div>
+  <img src={% static 'img/nginx1.png' %}>
+</div>
+
+<div class="w-full">
+	<p>Základní konfigurační soubory pro Nginx se nacházejí ve složce /etc/nginx, kam se nyní přesuneme, proto:</p>
+</div>
+
+<div class="w-full bg-black text-white">
+  <pre class="whitespace-pre-line m-3">
+cd /etc/nginx
+  </pre>
+</div>
+
+<div class="w-full">
+	<p class="italic text-gray-600">cd jako change directory</p>
+</div>
+
+<div class="w-full">
+	<p>Podívejme se, co se nachází v této složce:</p>
+</div>
+
+<div class="w-full bg-black text-white">
+  <pre class="whitespace-pre-line m-3">
+ls
+  </pre>
+</div>
+
+<div class="w-full">
+	<p class="italic text-gray-600">ls jako list</p>
+</div>
+
+<div class="w-full bg-black text-white">
+  <pre class="whitespace-pre-line m-3">
+root@debianserver:/etc/nginx# ls
+conf.d          koi-utf     modules-available  proxy_params     sites-enabled  win-utf
+fastcgi.conf    koi-win     modules-enabled    scgi_params      snippets
+fastcgi_params  mime.types  nginx.conf         sites-available  uwsgi_params
+root@debianserver:/etc/nginx# <span class="animate-pulse">_</span>
+  </pre>
+</div>
+
+<div class="w-full">
+	<p>Nejvíce nás budou zajímat složky <span class="font-semibold">sites-available</span> a <span class="font-semibold">sites-enabled</span>. V adresáři sites-available se nachází konfigurační soubory pro jednotlivé webové stránky, které mohou být aktivovány. V adresáři sites-enabled jsou symbolické odkazy na aktivované webové stránky, které jsou používány Nginxem.</p>
+</div>
+
+<div class="js-more-div flex flex-col justify-center items-center">
+  <div class="hidden js-more-text">
+  <div class="flex flex-col gap-3">
+  <p>conf.d: Tento adresář obsahuje další konfigurační soubory, které mohou být použity pro různá nastavení serveru. Můžete do tohoto adresáře umístit vlastní konfigurační soubory pro specifické webové aplikace nebo rozšíření.</p>
+  <p>modules-available a modules-enabled: Tyto adresáře obsahují moduly Nginx, které mohou být povoleny nebo zakázány. V adresáři modules-available jsou k dispozici všechny dostupné moduly, zatímco v adresáři modules-enabled jsou symbolické odkazy na moduly, které jsou aktuálně povoleny.</p>
+  <p>snippets: Tento adresář obsahuje krátké konfigurační kousky (snippety), které lze použít v jiných konfiguračních souborech. Tyto snippety usnadňují opakované používání konfiguračního kódu a usnadňují údržbu.</p>
+  <p>nginx.conf: Tento soubor je hlavním konfiguračním souborem Nginx. Obsahuje globální nastavení a také odkazy na další konfigurační soubory, které se používají pro specifická nastavení.</p>
+  </div>
+  </div>
+  <button class="js-more-button bg-red-300 p-1 px-3 rounded-md">Více</button>
+</div>
+
+
+
+
+
+
+
 
 
 
