@@ -346,6 +346,166 @@ apt update
 <a name="preapt"></a>
 <button class="bg-red-300 p-1 px-3 rounded-md"><a href={% url 'apt' %}>apt návod</a></button>
 
+<div class="w-full">
+	<p>(zde je obecný linux guide <a class="text-red-500" href="https://www.tecmint.com/free-online-linux-learning-guide-for-beginners/">linux-learning-guide-for-beginners</a>)</p>
+</div>
+
+<div class="w-full bg-black text-white">
+  <pre class="whitespace-pre-line m-3">
+Hit:1 http://security.debian.org/debian-security bookworm-security InRelease
+Hit:2 http://deb.debian.org/debian bookworm InRelease
+Hit:3 http://deb.debian.org/debian bookworm-updates InRelease
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+All packages are up to date.
+root@server:/# <span class="animate-pulse">_</span>
+  </pre>
+</div>
+
+<div class="w-full">
+  <ol class="list-decimal list-inside" start="4">
+    <li>Nyní musíme nainstalovat program <span class="font-semibold">sudo</span></li>
+  </ol>
+</div>
+
+<div class="w-full bg-black text-white">
+  <pre class="whitespace-pre-line m-3">
+apt install sudo
+  </pre>
+</div>
+
+<div class="w-full bg-black text-white">
+  <pre class="whitespace-pre-line m-3">
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following NEW packages will be installed:
+  sudo
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 1,889 kB of archives.
+After this operation, 6,199 kB of additional disk space will be used.
+Get:1 http://deb.debian.org/debian bookworm/main amd64 sudo amd64 1.9.13p3-1 [1,889 kB]
+Fetched 1,889 kB in 0s (5,655 kB/s)
+Selecting previously unselected package sudo.
+(Reading database ... 34758 files and directories currently installed.)
+Preparing to unpack .../sudo_1.9.13p3-1_amd64.deb ...
+Unpacking sudo (1.9.13p3-1) ...
+Setting up sudo (1.9.13p3-1) ...
+Processing triggers for man-db (2.11.2-2) ...
+Processing triggers for libc-bin (2.36-9) ...
+root@server:/# <span class="animate-pulse">_</span>
+  </pre>
+</div>
+
+<div class="w-full">
+<ol class="list-decimal list-inside" start="5">
+	<li>Nyní musíte <span class="font-semibold">přidat</span> váš stávající uživatelský účet do skupiny <span class="font-semibold">sudoers</span>. Přidání uživatele do skupiny sudoers se provádí pomocí příkazu <span class="font-semibold">usermod</span>. Nahraďte <em>uzivatel</em> za jméno vašeho stávajícího uživatele. Spusťte následující příkaz:</li>
+</ol>
+</div>
+
+<div class="w-full bg-black text-white">
+  <pre class="whitespace-pre-line m-3">
+usermod -aG sudo uzivatel
+  </pre>
+</div>
+
+<div class="w-full">
+	<p>Na příkaz nebudete mít od terminálu žádnou odezvu, pokud je vše správně.</p>
+</div>
+
+<div class="w-full">
+<ol start="6" class="list-decimal list-inside">
+<li>Nyní ověříme, že změny byly provedeny, odhlašte se z účtu root pomocí:</li>
+</ol>
+</div>
+
+<div class="w-full bg-black text-white">
+  <pre class="whitespace-pre-line m-3">
+exit
+  </pre>
+</div>
+
+
+<div class="w-full">
+<ol start="7" class="list-decimal list-inside">
+	<li>Nyní se přihlašte pomocí vašeho <em>uživatelského jména</em> a <em>hesla</em> <span class="font-semibold">normálního</span> uživatele.</li>
+</ol>
+</div>
+
+<div class="w-full">
+	<p>V mém případě:</p>
+</div>
+
+<div class="w-full bg-black text-white">
+  <pre class="whitespace-pre-line m-3">
+Debian GNU/Linux 12 server tty1
+
+server login: jh 
+Password:
+Linux server 6.1.0-9-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.27-1 (2023-05-08) X86_64
+    
+The programs included with the Debian GNU/Linux system are free software:
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+    
+Debian GNU/Linux comes with ABSOLUTELY NO HARRANTY, to the extent
+permitted by applicable law.
+Last login: Wed Jul 5 15:54:03 CEST 2023 from 192.168.0.104 on pts/0
+jh@server:~$ <span class="animate-pulse">_</span> 
+  </pre>
+</div>
+
+<div class="w-full">
+<ol start="8" class="list-decimal list-inside">
+  <li>Teď ověříme, zda máme skutečně práva administrátora a to příkazem, který aktualizuje seznam dostupných software balíčků.
+  </li>
+</ol>
+</div>
+
+<div class="w-full bg-black text-white">
+  <pre class="whitespace-pre-line m-3">
+sudo apt update
+  </pre>
+</div>
+
+<div class="w-full">
+  <p>Budete vyzváni o zadání hesla:</p>
+</div>
+
+<div class="w-full bg-black text-white">
+  <pre class="whitespace-pre-line m-3">
+Last login: Wed Jul 5 15:54:03 CEST 2023 from 192.168.0.104 on pts/0
+jh@server:"$ sudo apt update
+[sudo] password for jh:
+  </pre>
+</div>
+
+<div class="w-full bg-black text-white">
+  <pre class="whitespace-pre-line m-3">
+Hit:1 http://deb.debian.org/debian bookworm InRelease
+Hit:2 http://security.debian.org/debian-security bookworm-security InRelease
+Hit:3 http://deb.debian.org/debian bookworm-updates InRelease
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information...Done
+All packages are up to date.
+jh@server:"$ <span class="animate-pulse">_</span> 
+  </pre>
+</div>
+
+<div class="w-full">
+	<p><span class="font-semibold">Náš uživatel má nyní práva administrátora.</span></p>
+</div>
+
+<div class="w-full">
+	<p>Nyní jste schopni pokračovat dále v návodu v tomto terminálu, pro pohodlnější přístup a možnost kopírování příkazů čtěte <span class="font-semibold">ssh</span>.</p>
+</div>
+
+<hr class="border border-black w-full my-1">
+
+
+
 </div>
 </div>
 
