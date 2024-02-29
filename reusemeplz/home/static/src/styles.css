@@ -594,6 +594,10 @@ video {
   margin-bottom: 1.75rem;
 }
 
+.ms-2 {
+  margin-inline-start: 0.5rem;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -608,10 +612,6 @@ video {
 
 .mt-6 {
   margin-top: 1.5rem;
-}
-
-.ms-2 {
-  margin-inline-start: 0.5rem;
 }
 
 .block {
@@ -825,14 +825,6 @@ video {
   text-align: center;
 }
 
-.indent-1 {
-  text-indent: 0.25rem;
-}
-
-.indent-2 {
-  text-indent: 0.5rem;
-}
-
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -892,16 +884,6 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-gray-700 {
-  --tw-text-opacity: 1;
-  color: rgb(55 65 81 / var(--tw-text-opacity));
-}
-
-.text-gray-400 {
-  --tw-text-opacity: 1;
-  color: rgb(156 163 175 / var(--tw-text-opacity));
 }
 
 .shadow-lg {
