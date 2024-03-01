@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rsync -ravuP --delete reusemeplz/reusemeplz/* prod/reusemeplz/
+rsync -ravuP --delete reusemeplz/* prod/reusemeplz/
 
 cat secret/key > prod/reusemeplz/reusemeplz/secret_key.txt
 
